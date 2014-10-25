@@ -1868,7 +1868,7 @@ footer {
 .social-font a[title="twitter"]::before,
 .social-font a[title="github"]::before,
 .social-font a[title="facebook"]::before,
-.social-font a[title="linkedin"]::before {
+.social-font a[title="jianshu"]::before {
   font-family: "FontAwesome";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1885,7 +1885,7 @@ footer {
 .social-font a[title="facebook"]::before {
   content: "\f09a";
 }
-.social-font a[title="linkedin"]::before {
+.social-font a[title="jianshu"]::before {
   content: "\f08c";
 }
 .copyright {
@@ -1902,10 +1902,10 @@ footer {
   }
 }
 .copyright a {
-  color: #fff;
+  color: #2ca6cb;
 }
 .copyright a:hover {
-  color: #2ca6cb;
+  color: #fff;
 }
 .article-content pre,
 .article-content .highlight {
