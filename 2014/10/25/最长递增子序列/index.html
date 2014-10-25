@@ -4,21 +4,14 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo博客搭建和github托管 | sly&#39;s blog</title>
+    <title>最长递增子序列 | sly&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="eesly">
     
-    <meta name="description" content="关于Hexo及基本安装
-1.Hexo是一个基于Node.js的静态博客程序，可以方便的生成静态网页托管在github上。
-2.安装Git，安装Node.js。
-3.在安装目录上新建一个Hexo\blog的文件夹，在里面右键Git-bash—安装Hexo。
-1
-2
-3
-4
-5
-$ npm instal">
+    <meta name="description" content="题目
+
+给定一个长度为N的数组a0,a1,a2…,an-1，找出一个最长的单调递增子序列（注：递增的意思是对于任意的i&amp;lt;j，都满足ai&amp;lt;aj，此外子序列的意思是不要求连续，顺序不乱即可）。例如：给定一个长度为6的数组A{5，6，7，1，2，8}，则其最长的单调递增子序列为{5，6，7，8">
     
     
     
@@ -75,15 +68,15 @@ $ npm instal">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/25/hexo博客搭建和github托管/" title="Hexo博客搭建和github托管" itemprop="url">Hexo博客搭建和github托管</a>
+      <a href="/2014/10/25/最长递增子序列/" title="最长递增子序列" itemprop="url">最长递增子序列</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="eesly">eesly</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-10-25T06:44:51.000Z" itemprop="datePublished">10月 25 2014</time>
-    更新日期:<time datetime="2014-10-25T11:58:03.000Z" itemprop="dateModified">10月 25 2014</time>
+    <time datetime="2014-10-25T13:13:47.000Z" itemprop="datePublished">10月 25 2014</time>
+    更新日期:<time datetime="2014-10-25T13:33:48.000Z" itemprop="dateModified">10月 25 2014</time>
     
   </p>
 </header>
@@ -92,23 +85,131 @@ $ npm instal">
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Hexo及基本安装"><span class="toc-number">1.</span> <span class="toc-text">关于Hexo及基本安装</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a></li></ol>
 		</div>
 		
-		<h2 id="关于Hexo及基本安装">关于Hexo及基本安装</h2>
-<p>1.Hexo是一个基于Node.js的静态博客程序，可以方便的生成静态网页托管在github上。</p>
-<p>2.安装<strong>Git</strong>，安装<strong>Node.js</strong>。</p>
-<p>3.在安装目录上新建一个Hexo\blog的文件夹，在里面右键Git-bash—安装<strong>Hexo</strong>。</p>
+		<h2 id="题目">题目</h2>
+<hr>
+<p>给定一个长度为N的数组a0,a1,a2…,an-1，找出一个最长的单调递增子序列（注：递增的意思是对于任意的i&lt;j，都满足ai&lt;aj，此外子序列的意思是不要求连续，顺序不乱即可）。例如：给定一个长度为6的数组A{5，6，7，1，2，8}，则其最长的单调递增子序列为{5，6，7，8}，长度为4。</p>
+<h2 id="分析">分析</h2>
+<hr>
+<p>可以采用单步判决的思想，对每一个长度的序列进行计算获取其LIS，即动态规划的思想，例如假设LIS[i]为序列a[0…..i]的最长递增子序列的长度。则对于每一个a[i]需要考虑的是<br><strong><a href="">1、首先假定a[i]自己成为一个递增子序列，长度为1；<br>2、逐一判断其前面的每一个值a[j]与a[i]的大小,如果a[j]<a[i],且LIS[j]+1>LIS[i]，则更新LIS[i]</a></strong><br>复杂度为O(n^2),如果要输出最长递增子序列，可以设置一个数组记录a[0….i]的最长递增子序列中前一个位置的下标，最后反向输出即可，实现如下。完整代码下载在<a href="https://github.com/eesly/algorithm/blob/master/LIS.cpp" target="_blank">githib-eesly</a></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
 5
-</pre></td><td class="code"><pre><span class="variable">$ </span>npm install hexo -g
-<span class="variable">$ </span>hexo init blog
-<span class="variable">$ </span>cd blog
-<span class="variable">$ </span>npm install
-<span class="variable">$ </span>hexo server
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="code"><pre><span class="keyword">int</span> LIS(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)
+{
+	<span class="keyword">int</span> len = n;
+	<span class="keyword">int</span> *dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];	<span class="comment">//dp[i]表示a[0...i]的最长序列长度</span>
+	<span class="keyword">int</span> *last_index = <span class="keyword">new</span> <span class="keyword">int</span>[n];<span class="comment">//记录dp[i]表示的最长子序列上一个位置下标*********</span>
+	<span class="keyword">int</span> end = <span class="number">0</span>;			<span class="comment">//记录最终的最长子序列最后一个值的下表*********</span>
+	<span class="keyword">int</span> rs = <span class="number">0</span>;
+	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; i++)
+	{
+		<span class="comment">//每个位置最初的递增序列长度为1，即序列只有一个值为其本身</span>
+		dp[i]=<span class="number">1</span>;
+		last_index[i] = i;	<span class="comment">//*********</span>
+		<span class="comment">//检查该值前面的每一个值，如果当前值大于它</span>
+		<span class="comment">//则比较LIS[当前值]与LIS[前面值]+1的大小,如果其更大则更新</span>
+		<span class="comment">//这样经过O(n^2)可以获得最长的递增序列长度</span>
+		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;i;j++)
+			<span class="keyword">if</span>(a[j]&lt;a[i] && dp[i]&lt;dp[j]+<span class="number">1</span>)
+			{
+				dp[i]=dp[j]+<span class="number">1</span>;
+				last_index[i] = j;<span class="comment">//*********</span>
+			}
+		<span class="keyword">if</span>(dp[i]&gt;rs)
+		{
+			rs = dp[i];
+			end = i;			<span class="comment">//*********</span>
+		}
+	}
+	<span class="keyword">int</span> sublen = rs;
+	<span class="keyword">while</span>(sublen--)				<span class="comment">//*********</span>
+	{							<span class="comment">//*********</span>
+		<span class="built_in">cout</span>&lt;&lt;a[end]&lt;&lt;<span class="string">" "</span>;		<span class="comment">//*********</span>
+		end = last_index[end];	<span class="comment">//*********</span>
+	}							<span class="comment">//*********</span>
+	<span class="built_in">cout</span>&lt;&lt;endl;					<span class="comment">//*********</span>
+	<span class="keyword">return</span> rs;
+}
+/------------------------------------------------------------/
+给个精简版
+<span class="keyword">int</span> LIS(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)
+{
+	<span class="keyword">int</span> len = n;
+	<span class="keyword">int</span> *dp = <span class="keyword">new</span> <span class="keyword">int</span>[n];	<span class="comment">//dp[i]表示a[0...i]的最长序列长度</span>
+	<span class="keyword">int</span> rs = <span class="number">0</span>;
+	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;n; i++)
+	{
+		<span class="comment">//每个位置最初的递增序列长度为1，即序列只有一个值为其本身</span>
+		dp[i]=<span class="number">1</span>;
+		<span class="comment">//检查该值前面的每一个值，如果当前值大于它</span>
+		<span class="comment">//则比较LIS[当前值]与LIS[前面值]+1的大小,如果其更大则更新</span>
+		<span class="comment">//这样经过O(n^2)可以获得最长的递增序列长度</span>
+		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;i;j++)
+			<span class="keyword">if</span>(a[j]&lt;a[i] && dp[i]&lt;dp[j]+<span class="number">1</span>)
+				dp[i]=dp[j]+<span class="number">1</span>;
+		<span class="keyword">if</span>(dp[i]&gt;rs)
+			rs = dp[i];
+	}
+	<span class="keyword">return</span> rs;
+}
 </pre></td></tr></table></figure>
 
   
@@ -117,7 +218,7 @@ $ npm instal">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  <span></span> <a href="/tags/算法,DP/">算法,DP</a>
   </div>
 
 
@@ -125,7 +226,7 @@ $ npm instal">
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2014/10/25/hexo博客搭建和github托管/" data-title="Hexo博客搭建和github托管 | sly&#39;s blog" data-tsina="1703654015" class="share clearfix">
+  <div data-url="http://yoursite.com/2014/10/25/最长递增子序列/" data-title="最长递增子序列 | sly&#39;s blog" data-tsina="1703654015" class="share clearfix">
   </div>
 
 </div>
@@ -135,18 +236,18 @@ $ npm instal">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/10/25/求取子序列问题-241992/" title="求取子序列问题">
+ <a href="/2014/10/25/最长递增子序列2/" title="最长递增子序列2">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  求取子序列问题</span>
+  最长递增子序列2</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/10/25/hello-world/"  title="Hello World">
+<a href="/2014/10/25/塔树最大和问题/"  title="塔树最大和问题">
  <strong>NEXT:</strong><br/> 
- <span>Hello World
+ <span>塔树最大和问题
 </span>
 </a>
 </div>
@@ -163,7 +264,7 @@ $ npm instal">
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Hexo及基本安装"><span class="toc-number">1.</span> <span class="toc-text">关于Hexo及基本安装</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目"><span class="toc-number">1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a></li></ol>
   </div>
 
 <div id="asidepart">
