@@ -4,16 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>最长递增子序列2 | sly&#39;s blog</title>
+    <title>利用SSH省去在hexo deploy输入密码 | sly&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="eesly">
     
-    <meta name="description" content="和前面那篇解决的问题是一样的，这里主要考虑第二种方法，将其转换为最长公共子序列的问题
-问题
+    <meta name="description" content="在安装好git,node.js,hexo后每次deploy都要输入用户名和密码，太bug了，还是把之前偷懒没有设置的ssh key补上吧
+配置ssh key
 
-给定一个长度为N的数组a0,a1,a2…,an-1，找出一个最长的单调递增子序列（注：递增的意思是对于任意的i&amp;lt;j，都满足ai&amp;lt;aj，此外子序列的意思是不要求连续，顺序不乱即可）。
- 例如：给定">
+这个网上很多，大致步骤如下1、在任意文件夹下，右键git bash,到.ssh文件夹下看看是否为空，无直接创建，有备份删除创建（好暴力。。。">
     
     
     
@@ -70,15 +69,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/25/最长递增子序列2/" title="最长递增子序列2" itemprop="url">最长递增子序列2</a>
+      <a href="/2014/10/26/利用ssh省去在hexo-deploy输入密码/" title="利用SSH省去在hexo deploy输入密码" itemprop="url">利用SSH省去在hexo deploy输入密码</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://yoursite.com" title="eesly">eesly</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-10-25T13:19:04.000Z" itemprop="datePublished">10月 25 2014</time>
-    更新日期:<time datetime="2014-10-25T14:32:54.000Z" itemprop="dateModified">10月 25 2014</time>
+    <time datetime="2014-10-25T16:01:26.000Z" itemprop="datePublished">10月 26 2014</time>
+    更新日期:<time datetime="2014-10-25T16:40:24.000Z" itemprop="dateModified">10月 26 2014</time>
     
   </p>
 </header>
@@ -87,179 +86,100 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置ssh_key"><span class="toc-number">1.</span> <span class="toc-text">配置ssh key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置传输为ssh协议"><span class="toc-number">2.</span> <span class="toc-text">设置传输为ssh协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
 		</div>
 		
-		<p>和前面那篇解决的问题是一样的，这里主要考虑第二种方法，将其转换为最长公共子序列的问题</p>
-<h2 id="问题">问题</h2>
+		<p>在安装好git,node.js,hexo后每次deploy都要输入用户名和密码，太bug了，还是把之前偷懒没有设置的ssh key补上吧</p>
+<h2 id="配置ssh_key">配置ssh key</h2>
 <hr>
-<p>给定一个长度为N的数组a0,a1,a2…,an-1，找出一个最长的单调递增子序列<br>（注：递增的意思是对于任意的i&lt;j，都满足ai&lt;aj，此外子序列的意思是不要求连续，顺序不乱即可）。</p>
-<p> 例如：给定一个长度为6的数组A{5， 6， 7， 1， 2， 8}，则其最长的单调递增子序列为{5，6，7，8}，长度为4。</p>
-<h2 id="分析">分析</h2>
-<hr>
-<p>一种解法是转换为最长公共子序列问题，另外一种解法则是动态规划。这里考虑最长公共子序列的方法<br>1、将给定序列进行排序<br>2、对给定序列和排序序列求取最长公共子序列<br>3、由于有序序列保证了递增性，最终可以获得最长的递增子序列<br>这种方法有个问题：如果给定的序列存在相同的字符，求取的最长递增子序列包括相同的字符，需要根据需求进行去除。<br>最长公共子序列的问题参考 <a href="http://www.jianshu.com/p/ec38c0fefbd2" target="_blank">最长公共子序列</a><br>最终实现如下，完整代码下载在<a href="https://github.com/eesly/algorithm/blob/master/LIS2.cpp" target="_blank">github-eesly</a></p>
+<p>这个网上很多，大致步骤如下<br>1、在任意文件夹下，右键git bash,到.ssh文件夹下看看是否为空，无直接创建，有备份删除创建（好暴力。。。）</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-</pre></td><td class="code"><pre><span class="keyword">int</span> mycmp(<span class="keyword">const</span> <span class="keyword">void</span> *a,<span class="keyword">const</span> <span class="keyword">void</span> *b)
-{
-	<span class="keyword">return</span> (*((<span class="keyword">int</span>*)a))-(*((<span class="keyword">int</span>*)b));	<span class="comment">//此处选择-号不要使用小于号，使用a-b对应小到大排序</span>
-}
-<span class="keyword">int</span> LCS(<span class="keyword">int</span> a[],<span class="keyword">int</span> lenA,<span class="keyword">int</span> b[],<span class="keyword">int</span> lenB)
-{
-	<span class="keyword">int</span> **c = <span class="keyword">new</span> <span class="keyword">int</span>*[lenA+<span class="number">1</span>];
-	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;lenA+<span class="number">1</span>; i++)
-		c[i] = <span class="keyword">new</span> <span class="keyword">int</span>[lenB+<span class="number">1</span>];
-	<span class="comment">//初始化c[i][0]和c[0][j]为0</span>
-	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;lenA; i++)
-		c[i][<span class="number">0</span>] = <span class="number">0</span>;
-	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j&lt;lenB; j++)
-		c[<span class="number">0</span>][j] = <span class="number">0</span>;
-	<span class="comment">//两重循环，复杂度o(lenA*lenB)</span>
-	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;lenA+<span class="number">1</span>; i++)
-		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j&lt;lenB+<span class="number">1</span>; j++)
-		{
-			<span class="comment">//对于两个序列当前的值进行判断，如果相等则此时c[i][j]=c[i-1][j-1]+1;</span>
-			<span class="comment">//含义：c[i][j]		表示a[0.....i]与b[0.....j]的最长公共子序列的长度</span>
-			<span class="comment">//	    c[i-1][j-1]	表示a[0.....i-1]与b[0.....j-1]的最长公共子序列的长度</span>
-			<span class="keyword">if</span>(a[i-<span class="number">1</span>]==b[j-<span class="number">1</span>])
-				c[i][j] = c[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>;
-			<span class="comment">//如果不相等，则继承前面的最长的长度，离c[i][j]最近的分别为c[i][j-1]和c[i-1][j]</span>
-			<span class="keyword">else</span>
-				c[i][j] = c[i-<span class="number">1</span>][j]&gt;c[i][j-<span class="number">1</span>]?c[i-<span class="number">1</span>][j]:c[i][j-<span class="number">1</span>];
-		}
-
-	<span class="comment">//逆序输出最长递增子序列</span>
-	<span class="keyword">int</span> i = lenA,j = lenB;
-	<span class="keyword">int</span> k = c[lenA][lenB]-<span class="number">1</span>;
-	<span class="keyword">int</span> *LISq = <span class="keyword">new</span> <span class="keyword">int</span>[c[lenA][lenB]];
-	<span class="keyword">while</span>(i&&j)
-	{
-		<span class="keyword">if</span>(a[i-<span class="number">1</span>]==b[j-<span class="number">1</span>]&&c[i][j] == c[i-<span class="number">1</span>][j-<span class="number">1</span>]+<span class="number">1</span>)
-		{
-			LISq[k--] = a[i-<span class="number">1</span>];
-			i--;
-			j--;
-		}
-		<span class="keyword">else</span> <span class="keyword">if</span>(a[i-<span class="number">1</span>]!=b[j-<span class="number">1</span>]&&c[i-<span class="number">1</span>][j] &gt; c[i][j-<span class="number">1</span>])
-			i--;
-		<span class="keyword">else</span>
-			j--;			
-	}
-	printNum(LISq, c[lenA][lenB]);
-	<span class="comment">//资源回收</span>
-	<span class="keyword">int</span> rs = c[lenA][lenB];
-	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;lenA+<span class="number">1</span>; i++)
-		<span class="keyword">delete</span> [] c[i];
-	<span class="keyword">delete</span> [] LISq;
-	<span class="keyword">return</span> rs;
-}
-<span class="keyword">int</span> main()
-{
-	srand((<span class="keyword">unsigned</span>)time(NULL));
-	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX_NUM; i++)
-		a[i] = rand()%MAX_NUM;
-	<span class="built_in">memcpy</span>(b,a,MAX_NUM*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));
-	printNum(a,MAX_NUM);
-
-	qsort(b,MAX_NUM,<span class="keyword">sizeof</span>(<span class="keyword">int</span>),mycmp);
-	printNum(b,MAX_NUM);
-
-	<span class="built_in">cout</span>&lt;&lt;<span class="string">"最长递增子序列为："</span>;
-	<span class="keyword">int</span> len = LCS(a,MAX_NUM,b,MAX_NUM);
-	<span class="built_in">cout</span>&lt;&lt;<span class="string">"最长递增子序列长度为："</span>&lt;&lt;len&lt;&lt;endl;
-
-	system(<span class="string">"pause"</span>);
-}
+</pre></td><td class="code"><pre>$ cd ~<span class="subst">/</span><span class="built_in">.</span>ssh
+$ git config <span class="subst">--</span><span class="built_in">global</span> user<span class="built_in">.</span>name <span class="string">"yourname"</span>
+$ git config <span class="subst">--</span><span class="built_in">global</span> user<span class="built_in">.</span>email <span class="string">"youremail"</span>
+$ ssh<span class="attribute">-keygen</span> <span class="attribute">-t</span> rsa <span class="attribute">-C</span> <span class="string">"youremail"</span>（后三个空格即可，也可以根据提示输入）
 </pre></td></tr></table></figure>
 
+<p>2、这时候.ssh下将出现两个文件id_rsa和id_rsa.pub，id_rsa.pub是公钥，打开复制里面的内容<br>3、在github中的yourname.github.io仓库下的setting下的deploy ssh下添加key,将上述内容复制即可<br>4、测试</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com
+</pre></td></tr></table></figure>
+
+<p>出现如下信息则正常</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>Hi username! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span>
+<span class="comment"># provide shell access.</span>
+</pre></td></tr></table></figure>
+
+<h2 id="设置传输为ssh协议">设置传输为ssh协议</h2>
+<hr>
+<p>这个主要是在deploy时，保证传输时使用ssh协议以避免输入用户名和密码<br>1、<strong>进入存在.git文件的那个文件夹</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ <span class="built_in">cd</span> .deploy/
+</pre></td></tr></table></figure>
+
+<p>2、查看当前的传输协议，如果是http，则更改，如果是ssh则不要后续的操作了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>$ git remote -v
+origin  https://github<span class="preprocessor">.com</span>/USERNAME/REPOSITORY<span class="preprocessor">.git</span> (fetch)
+origin  https://github<span class="preprocessor">.com</span>/USERNAME/REPOSITORY<span class="preprocessor">.git</span> (<span class="keyword">push</span>)
+</pre></td></tr></table></figure>
+
+<p>3、更改http为ssh</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>$ git remote <span class="keyword">set</span>-url origin git@github<span class="preprocessor">.com</span>:USERNAME/REPOSITORY2<span class="preprocessor">.git</span>
+</pre></td></tr></table></figure>
+
+<p>4、检查一下，是否进行了相应的更改</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="variable">$ </span>git remote -v
+<span class="comment"># Verify new remote URL</span>
+<span class="comment"># origin  git<span class="yardoctag">@github</span>.com:USERNAME/REPOSITORY2.git (fetch)</span>
+<span class="comment"># origin  git<span class="yardoctag">@github</span>.com:USERNAME/REPOSITORY2.git (push)</span>
+</pre></td></tr></table></figure>
+
+<p>到此大功告成，这是返回上一层目录，进行上传则不需要输入密码了~</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="variable">$ </span>cd ..
+<span class="variable">$ </span>hexo d
+</pre></td></tr></table></figure>
+
+<h2 id="参考">参考</h2>
+<hr>
+<ul>
+<li><a href="https://help.github.com/articles/changing-a-remote-s-url/" target="_blank">Changing a remote’s URL</a></li>
+<li><a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a></li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/算法/">算法</a><a href="/tags/DP/">DP</a>
+  <span></span> <a href="/tags/SSH/">SSH</a><a href="/tags/Git/">Git</a>
   </div>
 
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
+  <a class="article-category-link" href="/categories/hexo/">hexo</a>
 </div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://yoursite.com/2014/10/25/最长递增子序列2/" data-title="最长递增子序列2 | sly&#39;s blog" data-tsina="1703654015" class="share clearfix">
+  <div data-url="http://yoursite.com/2014/10/26/利用ssh省去在hexo-deploy输入密码/" data-title="利用SSH省去在hexo deploy输入密码 | sly&#39;s blog" data-tsina="1703654015" class="share clearfix">
   </div>
 
 </div>
@@ -268,19 +188,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/10/26/利用ssh省去在hexo-deploy输入密码/" title="利用SSH省去在hexo deploy输入密码">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  利用SSH省去在hexo deploy输入密码</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/10/25/最长递增子序列/"  title="最长递增子序列">
+<a href="/2014/10/25/最长递增子序列2/"  title="最长递增子序列2">
  <strong>NEXT:</strong><br/> 
- <span>最长递增子序列
+ <span>最长递增子序列2
 </span>
 </a>
 </div>
@@ -297,7 +209,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置ssh_key"><span class="toc-number">1.</span> <span class="toc-text">配置ssh key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置传输为ssh协议"><span class="toc-number">2.</span> <span class="toc-text">设置传输为ssh协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
   </div>
 
 <div id="asidepart">
