@@ -4,15 +4,31 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>利用SSH省去在hexo deploy输入密码 | sly&#39;s blog</title>
+    <title>多说评论配置 | sly&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="eesly">
     
-    <meta name="description" content="在安装好git,node.js,hexo后每次deploy都要输入用户名和密码，太bug了，还是把之前偷懒没有设置的ssh key补上吧
-配置ssh key
-
-这个网上很多，大致步骤如下1、在任意文件夹下，右键git bash,到.ssh文件夹下看看是否为空，无直接创建，有备份删除创建（好暴力。。。">
+    <meta name="description" content="1、注册多说账户
+在设置里面复制如下通用代码
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+&amp;lt;!-- 多说评论框 start --&amp;gt;
+	&amp;lt;div class=&quot;ds-thread&quot; data-thread-key=&quot;请将此处替换成文章在你的站点中的I">
     
     
     
@@ -69,15 +85,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/10/26/利用ssh省去在hexo-deploy输入密码/" title="利用SSH省去在hexo deploy输入密码" itemprop="url">利用SSH省去在hexo deploy输入密码</a>
+      <a href="/2014/10/26/测试多说评论/" title="多说评论配置" itemprop="url">多说评论配置</a>
   </h1>
   <p class="article-author">By
     
       <a href="http://eesly.gihub.io" title="eesly">eesly</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-10-25T16:01:26.000Z" itemprop="datePublished">10月 26 2014</time>
-    更新日期:<time datetime="2014-10-25T16:40:24.000Z" itemprop="dateModified">10月 26 2014</time>
+    <time datetime="2014-10-26T05:08:24.000Z" itemprop="datePublished">10月 26 2014</time>
+    更新日期:<time datetime="2014-10-26T05:17:40.000Z" itemprop="dateModified">10月 26 2014</time>
     
   </p>
 </header>
@@ -86,100 +102,94 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置ssh_key"><span class="toc-number">1.</span> <span class="toc-text">配置ssh key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置传输为ssh协议"><span class="toc-number">2.</span> <span class="toc-text">设置传输为ssh协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、注册多说账户"><span class="toc-number">1.</span> <span class="toc-text">1、注册多说账户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置hexo下的_config-yml"><span class="toc-number">2.</span> <span class="toc-text">配置hexo下的_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置theme下的_config-yml"><span class="toc-number">3.</span> <span class="toc-text">配置theme下的_config.yml</span></a></li></ol>
 		</div>
 		
-		<p>在安装好git,node.js,hexo后每次deploy都要输入用户名和密码，太bug了，还是把之前偷懒没有设置的ssh key补上吧</p>
-<h2 id="配置ssh_key">配置ssh key</h2>
-<hr>
-<p>这个网上很多，大致步骤如下<br>1、在任意文件夹下，右键git bash,到.ssh文件夹下看看是否为空，无直接创建，有备份删除创建（好暴力。。。）</p>
+		<h2 id="1、注册多说账户">1、注册多说账户</h2>
+<p>在设置里面复制如下通用代码</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre>$ cd ~<span class="subst">/</span><span class="built_in">.</span>ssh
-$ git config <span class="subst">--</span><span class="built_in">global</span> user<span class="built_in">.</span>name <span class="string">"yourname"</span>
-$ git config <span class="subst">--</span><span class="built_in">global</span> user<span class="built_in">.</span>email <span class="string">"youremail"</span>
-$ ssh<span class="attribute">-keygen</span> <span class="attribute">-t</span> rsa <span class="attribute">-C</span> <span class="string">"youremail"</span>（后三个空格即可，也可以根据提示输入）
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="comment">&lt;!-- 多说评论框 start --&gt;</span>
+	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"ds-thread"</span> <span class="attribute">data-thread-key</span>=<span class="value">"请将此处替换成文章在你的站点中的ID"</span> <span class="attribute">data-title</span>=<span class="value">"请替换成文章的标题"</span> <span class="attribute">data-url</span>=<span class="value">"请替换成文章的网址"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="comment">&lt;!-- 多说评论框 end --&gt;</span>
+<span class="comment">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+<span class="keyword">var</span> duoshuoQuery = {short_name:<span class="string">"你的多说账户名"</span>};
+	(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+		<span class="keyword">var</span> ds = document.createElement(<span class="string">'script'</span>);
+		ds.type = <span class="string">'text/javascript'</span>;ds.async = <span class="literal">true</span>;
+		ds.src = (document.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;
+		ds.charset = <span class="string">'UTF-8'</span>;
+		(document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] 
+		 || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(ds);
+	})();
+	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="comment">&lt;!-- 多说公共JS代码 end --&gt;</span>
 </pre></td></tr></table></figure>
 
-<p>2、这时候.ssh下将出现两个文件id_rsa和id_rsa.pub，id_rsa.pub是公钥，打开复制里面的内容<br>3、在github中的yourname.github.io仓库下的setting下的deploy ssh下添加key,将上述内容复制即可<br>4、测试</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>ssh -<span class="constant">T</span> git<span class="variable">@github</span>.com
-</pre></td></tr></table></figure>
-
-<p>出现如下信息则正常</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-</pre></td><td class="code"><pre>Hi username! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span>
-<span class="comment"># provide shell access.</span>
-</pre></td></tr></table></figure>
-
-<h2 id="设置传输为ssh协议">设置传输为ssh协议</h2>
-<hr>
-<p>这个主要是在deploy时，保证传输时使用ssh协议以避免输入用户名和密码<br>1、<strong>进入存在.git文件的那个文件夹</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ <span class="built_in">cd</span> .deploy/
-</pre></td></tr></table></figure>
-
-<p>2、查看当前的传输协议，如果是http，则更改，如果是ssh则不要后续的操作了</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-</pre></td><td class="code"><pre>$ git remote -v
-origin  https://github<span class="preprocessor">.com</span>/USERNAME/REPOSITORY<span class="preprocessor">.git</span> (fetch)
-origin  https://github<span class="preprocessor">.com</span>/USERNAME/REPOSITORY<span class="preprocessor">.git</span> (<span class="keyword">push</span>)
-</pre></td></tr></table></figure>
-
-<p>3、更改http为ssh</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>$ git remote <span class="keyword">set</span>-url origin git@github<span class="preprocessor">.com</span>:USERNAME/REPOSITORY2<span class="preprocessor">.git</span>
-</pre></td></tr></table></figure>
-
-<p>4、检查一下，是否进行了相应的更改</p>
+<p>将上述代码复制到如下文件中，并进行如下修改</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
-</pre></td><td class="code"><pre><span class="variable">$ </span>git remote -v
-<span class="comment"># Verify new remote URL</span>
-<span class="comment"># origin  git<span class="yardoctag">@github</span>.com:USERNAME/REPOSITORY2.git (fetch)</span>
-<span class="comment"># origin  git<span class="yardoctag">@github</span>.com:USERNAME/REPOSITORY2.git (push)</span>
+5
+6
+</pre></td><td class="code"><pre>hexo<span class="subst">\</span>themes<span class="subst">\</span>Tinny<span class="subst">\</span>Tinny<span class="subst">\</span>layout<span class="subst">\</span>_partial<span class="subst">\</span>post<span class="subst">\</span>comments<span class="built_in">.</span>ejs
+修改如下
+<span class="number">1</span>、<span class="subst">&lt;</span>div class<span class="subst">=</span><span class="string">"ds-thread"</span> <span class="built_in">data</span><span class="attribute">-thread</span><span class="attribute">-key</span><span class="subst">=</span><span class="string">"请将此处替换成文章在你的站点中的ID"</span> <span class="built_in">data</span><span class="attribute">-title</span><span class="subst">=</span><span class="string">"请替换成文章的标题"</span> <span class="built_in">data</span><span class="attribute">-url</span><span class="subst">=</span><span class="string">"请替换成文章的网址"</span><span class="subst">&gt;&lt;</span>/div<span class="subst">&gt;</span>
+<span class="subst">==&gt;</span>
+<span class="subst">&lt;</span>div class<span class="subst">=</span><span class="string">"ds-thread"</span> <span class="built_in">data</span><span class="attribute">-thread</span><span class="attribute">-key</span><span class="subst">=</span><span class="string">"&lt;%- config.root %&gt;&lt;%- item.path%&gt;"</span> <span class="built_in">data</span><span class="attribute">-title</span><span class="subst">=</span><span class="string">"&lt;%- item.title %&gt;"</span> <span class="built_in">data</span><span class="attribute">-url</span><span class="subst">=</span><span class="string">"&lt;%- item.permalink %&gt;"</span><span class="subst">&gt;&lt;</span>/div<span class="subst">&gt;</span>
+<span class="number">2</span>、<span class="built_in">var</span> duoshuoQuery <span class="subst">=</span> {short_name:<span class="string">"你的多说账户名"</span>};
 </pre></td></tr></table></figure>
 
-<p>到此大功告成，这是返回上一层目录，进行上传则不需要输入密码了~</p>
+<hr>
+<h2 id="配置hexo下的_config-yml">配置hexo下的_config.yml</h2>
+<p>将其中的URL修改为，你的blog域名，以在github上托管为例</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
-</pre></td><td class="code"><pre><span class="variable">$ </span>cd ..
-<span class="variable">$ </span>hexo d
+3
+</pre></td><td class="code"><pre># URL
+## <span class="keyword">If</span> your site <span class="keyword">is</span> put <span class="keyword">in</span> a subdirectory, <span class="keyword">set</span> url <span class="keyword">as</span> <span class="string">'http://yoursite.com/child'</span> <span class="keyword">and</span> root <span class="keyword">as</span> <span class="string">'/child/'</span>
+url: http:<span class="comment">//yourname.gihub.io</span>
 </pre></td></tr></table></figure>
 
-<h2 id="参考">参考</h2>
 <hr>
-<ul>
-<li><a href="https://help.github.com/articles/changing-a-remote-s-url/" target="_blank">Changing a remote’s URL</a></li>
-<li><a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank">Generating SSH keys</a></li>
-</ul>
+<h2 id="配置theme下的_config-yml">配置theme下的_config.yml</h2>
+<p>将其中的评论系统开启，同时输入多说账户名</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="comment">#### Comment</span>
+duoshuo: 
+  enable: <span class="literal">true</span>  <span class="comment">## duoshuo.com</span>
+  short_name: 你的多说账户名   <span class="comment">## duoshuo short name.</span>
+</pre></td></tr></table></figure>
+
   
 	</div>
 		<footer class="article-footer clearfix">
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/SSH/">SSH</a><a href="/tags/Git/">Git</a>
-  </div>
-
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/hexo/">hexo</a>
-</div>
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="http://eesly.gihub.io/2014/10/26/利用ssh省去在hexo-deploy输入密码/" data-title="利用SSH省去在hexo deploy输入密码 | sly&#39;s blog" data-tsina="1703654015" class="share clearfix">
+  <div data-url="http://eesly.gihub.io/2014/10/26/测试多说评论/" data-title="多说评论配置 | sly&#39;s blog" data-tsina="1703654015" class="share clearfix">
   </div>
 
 </div>
@@ -188,19 +198,11 @@ origin  https://github<span class="preprocessor">.com</span>/USERNAME/REPOSITORY
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/10/26/测试多说评论/" title="多说评论配置">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  多说评论配置</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2014/10/25/最长递增子序列2/"  title="最长递增子序列2">
+<a href="/2014/10/26/利用ssh省去在hexo-deploy输入密码/"  title="利用SSH省去在hexo deploy输入密码">
  <strong>NEXT:</strong><br/> 
- <span>最长递增子序列2
+ <span>利用SSH省去在hexo deploy输入密码
 </span>
 </a>
 </div>
@@ -210,7 +212,7 @@ origin  https://github<span class="preprocessor">.com</span>/USERNAME/REPOSITORY
 	
 
 <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/2014/10/26/利用ssh省去在hexo-deploy输入密码/" data-title="利用SSH省去在hexo deploy输入密码" data-url="http://eesly.gihub.io/2014/10/26/利用ssh省去在hexo-deploy输入密码/"></div>
+	<div class="ds-thread" data-thread-key="/2014/10/26/测试多说评论/" data-title="多说评论配置" data-url="http://eesly.gihub.io/2014/10/26/测试多说评论/"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -229,10 +231,8 @@ var duoshuoQuery = {short_name:"eesly"};
 
  <nav id="pagination" >
     
-    <a href="/2014/10/26/测试多说评论/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2014/10/25/最长递增子序列2/" class="alignright next" >下一页</a>
+    <a href="/2014/10/26/利用ssh省去在hexo-deploy输入密码/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -244,7 +244,7 @@ var duoshuoQuery = {short_name:"eesly"};
       
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置ssh_key"><span class="toc-number">1.</span> <span class="toc-text">配置ssh key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置传输为ssh协议"><span class="toc-number">2.</span> <span class="toc-text">设置传输为ssh协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、注册多说账户"><span class="toc-number">1.</span> <span class="toc-text">1、注册多说账户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置hexo下的_config-yml"><span class="toc-number">2.</span> <span class="toc-text">配置hexo下的_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置theme下的_config-yml"><span class="toc-number">3.</span> <span class="toc-text">配置theme下的_config.yml</span></a></li></ol>
   </div>
 
 <div id="asidepart">
